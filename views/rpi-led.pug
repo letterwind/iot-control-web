@@ -2,9 +2,12 @@ extends layout
 
 block content
   h1= title
-  button(id="13",class="btn btn-info btnLed") 黃燈
-  button(id="12",class="btn btn-info btnLed") 紅燈
+  div(class="row")
+    button(id="13",class="btn btn-info btnLed") 黃燈
+    button(id="12",class="btn btn-info btnLed") 紅燈
 
+  img(src="/image/Led1.png",width="100%")
+  img(src="https://c1.staticflickr.com/5/4198/34752980940_b716da7288_b.jpg")
   script(src="/js/rpi-led.js")
 
   
