@@ -1,6 +1,9 @@
 doctype html
 html
   head
+    meta(charset="utf-8")
+    meta(http-equiv="X-UA-Compatible",content="IE=edge")
+    meta(name="viewport",content="width=device-width, initial-scale=1")
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
     link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css",integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u",crossorigin="anonymous")
@@ -22,6 +25,18 @@ html
               a(href="#") Home
             li
               a(href="/rpi-led") 樹梅派開燈(LED)
+            li
+              a(href="/rpi-camera") 樹梅派相機
+            li
+              a(href="/arduino-dht11") 溫溼度感測(DHT11)
+            li
+              a(href="/arduino-") 溫度感測
+            li
+              a(href="/arduino-sonic") 超音波感測
+            li
+              a(href="/arduino-dcmotors") DC馬達控制
+            li
+              a(href="/arduino-relay") 繼電器(Relay)
     div(class="container")
       block content
 
