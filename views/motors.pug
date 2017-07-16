@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  h1= title
+  div(class="row")
+
+    button(id="btnFwd",class="btn btn-info btnFwd") 前進
+    button(id="btnBack",class="btn btn-info btnBack") 後退
+    button(id="btnRight",class="btn btn-info btnRight") 右轉
+    button(id="btnLeft",class="btn btn-info btnLeft") 左轉
+    
+    button(id="btnStop",class="btn btn-stop") 停止
+    div(id="wrap" class="row")
+        img(src="./image/motor-hbridge-dual_bb.png" width="800")
+  script(src="/js/motors.js")
+
+  

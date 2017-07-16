@@ -4,12 +4,17 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var io = require('socket.io');
+var net = require('net');
+
 
 var index = require('./routes/index');
 var users = require('./routes/users');
 var rpiLed = require('./routes/rpi-led');
 var rpiCamera = require('./routes/camera');
 var temperature = require('./routes/temperature');
+var ultrasonic = require('./routes/ultrasonic');
+var motors = require('./routes/motors');
 
 var app = express();
 
@@ -25,11 +30,32 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+var client = new net.Socket();
+client.connect(80, '192.168.31.120');
+app.use(function(req, res, next) {
+    req.client = client;
+
+    //client.destroy();
+
+
+    next();
+});
+client.on('data', function(data) {
+    console.log('Received: ' + data);
+    //client.destroy(); // kill client after server's response
+});
+
+client.on('close', function() {
+    console.log('Connection closed');
+    client.connect(80, '192.168.31.120');
+});
 app.use('/', index);
 app.use('/users', users);
 app.use('/rpi-led', rpiLed);
 app.use('/camera', rpiCamera);
 app.use('/arduino-18b20', temperature);
+app.use('/arduino-sonic', ultrasonic);
+app.use('/arduino-dcmotors', motors);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

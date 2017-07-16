@@ -1,0 +1,11 @@
+extends layout
+
+block content
+  h1= title
+  div(class="row")
+    button(id="btnDist",class="btn btn-info btnDist") 距離
+    span(id="dist") 
+    button(id="btnClose",class="btn btn-danger") 結束感測
+  script(src="/js/dist.js")
+
+  
